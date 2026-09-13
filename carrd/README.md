@@ -26,7 +26,7 @@ rather upload them to Carrd and use `embed.html`.
    - **Padding: 0** (top and bottom)
 5. Publish
 
-The fonts (Anton, Inter, Caveat) load automatically from Google Fonts via an
+The fonts (Oswald, Inter, Caveat) load automatically from Google Fonts via an
 `@import` at the top of the embed's `<style>` — nothing to upload.
 
 ## How it was made safe for Carrd

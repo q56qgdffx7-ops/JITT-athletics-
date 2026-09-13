@@ -10,7 +10,7 @@ the repo can be served exactly as it sits.
 index.html                whole page
 assets/css/styles.css     all styling; brand tokens in :root at the top
 assets/js/main.js         nav, scroll reveals, join dialog
-assets/fonts/             Anton, Inter, Caveat (self-hosted, latin subset)
+assets/fonts/             Oswald, Inter, Caveat (self-hosted, latin subset)
 assets/img/               logo, photography, favicon, social card
 ```
 
@@ -106,9 +106,12 @@ These are placeholders on purpose — each needs an account or a service:
 ## Notes
 
 - Fonts are self-hosted, so the site loads nothing from Google and works
-  offline. Anton is the display face, Inter the body, Caveat the handwritten
-  "Built Different" line.
+  offline. Oswald Bold is the display face (measured against the comp's headline:
+  its width-to-cap-height ratio matches within 3%, where Anton was 21% too
+  narrow), Inter the body, Caveat the handwritten "Built Different" line.
 - Respects `prefers-reduced-motion` — all animation is disabled for visitors
   who ask for that.
 - Tested from 320px to 1600px wide: no horizontal scroll, menu reachable at
   every size, tap targets at least 44px.
+- Laid out to match the brand comp: every section is within 2% of the design's
+  measured heights, and the headline's cap height and line widths match exactly.

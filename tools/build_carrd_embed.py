@@ -4,7 +4,7 @@ SRC = "/home/user/JITT-athletics-"
 OUT = os.path.join(SRC, "carrd")
 R   = "jitt"
 FONT_IMPORT = ("@import url('https://fonts.googleapis.com/css2?"
-               "family=Anton&family=Caveat:wght@700&"
+               "family=Oswald:wght@700&family=Caveat:wght@700&"
                "family=Inter:wght@300;400;500;600;700&display=swap');")
 
 # Carrd styles bare elements (h1, p, a, img...). A direct element rule beats an
