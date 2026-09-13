@@ -3,306 +3,257 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>JITT Athletics — Gear, Training &amp; Team</title>
-<meta name="description" content="JITT Athletics builds gear, training programs, and a team for athletes who show up. Train hard. Wear it proud.">
-<meta name="theme-color" content="#0b0c0e">
+<title>JITT Athletics — People. Movement. Opportunity.</title>
+<meta name="description" content="JITT Athletics — Tampa, FL. Train, connect, and build a brighter tomorrow. A brighter tomorrow is a team effort.">
+<meta name="theme-color" content="#060d0b">
 
-<!-- Social sharing (update the URL once the site is live) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="JITT Athletics">
-<meta property="og:description" content="Gear, training, and a team for athletes who show up.">
-<meta property="og:image" content="assets/img/og-cover.svg">
+<meta property="og:title" content="JITT Athletics — People. Movement. Opportunity.">
+<meta property="og:description" content="A brighter tomorrow is a team effort. Tampa, FL.">
+<meta property="og:image" content="assets/img/og-cover.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/anton-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ================= HEADER ================= -->
+<!-- ===================== HEADER ===================== -->
 <header class="site-header" id="siteHeader">
   <div class="wrap header-inner">
-    <a class="brand" href="#top" aria-label="JITT Athletics home">
-      <span class="brand-mark" aria-hidden="true">J</span>
-      <span class="brand-name">JITT<span class="brand-thin">ATHLETICS</span></span>
+    <a class="logo" href="#top" aria-label="JITT Athletics — home">
+      <img src="assets/img/jitt-logo.png" alt="JITT Athletics" width="332" height="144">
     </a>
 
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#gear">Gear</a>
-      <a href="#training">Training</a>
-      <a href="#team">Team</a>
-      <a href="#story">Story</a>
-      <a class="nav-cta" href="#contact">Get in touch</a>
+      <a href="#top">Home</a>
+      <a href="#movement">Movement</a>
+      <a href="#community">Community</a>
+      <a href="#shop">Shop</a>
+      <a class="nav-join" href="mailto:hello@jittathletics.com?subject=Join%20JITT" data-join>Join JITT</a>
     </nav>
 
-    <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="header-actions">
+      <a class="btn btn-join desktop-only" href="mailto:hello@jittathletics.com?subject=Join%20JITT" data-join>Join JITT</a>
+
+      <button class="icon-btn" type="button" aria-label="Cart (0 items)" id="cartBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6">
+          <circle cx="9" cy="20" r="1.4" fill="currentColor" stroke="none"/>
+          <circle cx="18" cy="20" r="1.4" fill="currentColor" stroke="none"/>
+          <path d="M1.5 2h3l2.5 12.5h11L21.5 6H6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <button class="icon-btn nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
 <main id="main">
 
-  <!-- ================= HERO ================= -->
+  <!-- ===================== HERO ===================== -->
   <section class="hero" id="top">
-    <div class="hero-bg" aria-hidden="true"></div>
+    <img class="hero-img" src="assets/img/hero.jpg" alt="Three runners along the Tampa waterfront at sunset, city skyline behind them" fetchpriority="high">
+    <div class="hero-scrim" aria-hidden="true"></div>
+
     <div class="wrap hero-inner">
-      <p class="eyebrow reveal">Est. 2024 · Built for the work</p>
-      <h1 class="hero-title reveal">
-        Train hard.<br>
-        <span class="outline">Wear it proud.</span>
-      </h1>
-      <p class="hero-sub reveal">
-        JITT Athletics makes the gear, writes the programs, and runs the team.
-        One brand for athletes who keep showing up when it stops being fun.
-      </p>
-      <div class="hero-actions reveal">
-        <a class="btn btn-primary" href="#gear">Shop the gear</a>
-        <a class="btn btn-ghost" href="#training">See training programs</a>
+      <div class="hero-copy">
+        <h1 class="hero-title">People.<br>Movement.<br>Opportunity.</h1>
+        <p class="hero-sub">A brighter tomorrow<br>is a team effort.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:hello@jittathletics.com?subject=Join%20JITT" data-join>
+            Join the movement
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-glass" href="#movement">
+            <span class="play" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M9 7.5v9l7.5-4.5z" fill="currentColor"/></svg>
+            </span>
+            Watch our story
+          </a>
+        </div>
       </div>
 
-      <dl class="stats reveal">
-        <div><dt>Athletes trained</dt><dd data-count="500">500+</dd></div>
-        <div><dt>Weekly sessions</dt><dd data-count="12">12</dd></div>
-        <div><dt>Years in it</dt><dd data-count="3">3</dd></div>
-      </dl>
+      <p class="hero-script" aria-hidden="true">Built<br>Different<br>For A<br>Brighter<br>Tomorrow.</p>
+      <p class="hero-place">Tampa, FL</p>
     </div>
   </section>
 
-  <!-- ================= MARQUEE ================= -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>No shortcuts</span><span>·</span><span>Show up</span><span>·</span><span>Earn it</span><span>·</span>
-      <span>JITT Athletics</span><span>·</span><span>No shortcuts</span><span>·</span><span>Show up</span><span>·</span>
-      <span>Earn it</span><span>·</span><span>JITT Athletics</span><span>·</span>
-    </div>
-  </div>
+  <!-- ===================== PILLARS ===================== -->
+  <section class="pillars" id="movement" aria-label="What JITT is about">
+    <div class="wrap pillar-grid">
 
-  <!-- ================= GEAR ================= -->
-  <section class="section" id="gear">
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 32" aria-hidden="true" fill="currentColor">
+          <rect x="22" y="13" width="4" height="6" rx="1"/>
+          <rect x="15" y="9" width="6" height="14" rx="1.5"/>
+          <rect x="27" y="9" width="6" height="14" rx="1.5"/>
+          <rect x="9" y="12" width="5" height="8" rx="1.5"/>
+          <rect x="34" y="12" width="5" height="8" rx="1.5"/>
+          <rect x="5" y="14.5" width="3" height="3" rx="1"/>
+          <rect x="40" y="14.5" width="3" height="3" rx="1"/>
+        </svg>
+        <h2>Train</h2>
+        <p>Stronger People.</p>
+      </div>
+
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 32" aria-hidden="true" fill="currentColor">
+          <circle cx="24" cy="9" r="5"/>
+          <path d="M24 16c-5.5 0-9 3.2-9 7v2h18v-2c0-3.8-3.5-7-9-7z"/>
+          <circle cx="10" cy="12" r="4"/>
+          <path d="M10 18c-4.2 0-6.8 2.4-6.8 5.3V25H12v-1.2c0-2.2.9-4.2 2.4-5.5A11 11 0 0 0 10 18z"/>
+          <circle cx="38" cy="12" r="4"/>
+          <path d="M38 18c-1.6 0-3 .3-4.4.8 1.5 1.3 2.4 3.3 2.4 5.5V25h8.8v-1.7c0-2.9-2.6-5.3-6.8-5.3z"/>
+        </svg>
+        <h2>Community</h2>
+        <p>Real Connections.</p>
+      </div>
+
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 32" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+          <circle cx="24" cy="16" r="6" fill="currentColor" stroke="none"/>
+          <path d="M24 3v3.5M24 25.5V29M11.5 16H8M40 16h-3.5M15.2 7.2l2.5 2.5M30.3 22.3l2.5 2.5M32.8 7.2l-2.5 2.5M17.7 22.3l-2.5 2.5"/>
+        </svg>
+        <h2>Opportunity</h2>
+        <p>Bigger Tomorrows.</p>
+      </div>
+
+      <div class="pillar reveal">
+        <svg class="pillar-icon" viewBox="0 0 48 32" aria-hidden="true" fill="currentColor">
+          <path d="M22.9 30c-.2-6.1.2-11.7 1.5-16.6l2.3.6C25.5 18.6 25.1 24 25.3 30z"/>
+          <path d="M24.2 13.4c-4.9-1-9.6.5-12.7 4 1.7-5.2 6.2-8 11.9-7.1z"/>
+          <path d="M24 12.6c-4.3-2.5-9.2-2.8-12.8-1.1 3-3.9 8.5-4.4 12.6-1.7z"/>
+          <path d="M25.2 13.4c5-.9 9.6.7 12.6 4.3-1.5-5.3-6-8.2-11.7-7.4z"/>
+          <path d="M25.4 12.6c4.2-2.6 9.1-3.1 12.8-1.5-3.1-3.8-8.6-4.2-12.6-1.3z"/>
+          <path d="M24.6 11.3c-.7-3.6 1.2-7 4.1-8.3-3.2.4-5.9 3.7-5.5 8z"/>
+          <circle cx="23.3" cy="13.1" r="1"/><circle cx="26" cy="12.8" r="1"/>
+        </svg>
+        <h2>Impact</h2>
+        <p>A Greater You.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== FEATURE CARDS ===================== -->
+  <section class="features" id="community">
     <div class="wrap">
-      <header class="section-head reveal">
-        <p class="eyebrow">01 — Gear</p>
-        <h2>Kit that earns its place in the bag</h2>
-        <p class="lede">Tested in our own sessions before it ever goes on the site. Built to be worn four times a week, not four times a year.</p>
-      </header>
+      <div class="feature-row">
 
-      <div class="grid grid-3">
-        <article class="card product reveal">
-          <div class="product-media ph-1" aria-hidden="true"><span>Photo</span></div>
-          <div class="card-body">
-            <h3>Training Tee</h3>
-            <p>Breathable poly-cotton blend that survives the wash cycle and the workout.</p>
-            <p class="price">$34</p>
+        <article class="feature reveal">
+          <img class="feature-img" src="assets/img/podcast.jpg" alt="A JITT Athletics guest speaking into a studio microphone">
+          <div class="feature-scrim" aria-hidden="true"></div>
+          <div class="feature-body">
+            <p class="label">Featured</p>
+            <h2>Under<br>the Palms</h2>
+            <p class="feature-text">Real conversations with athletes, creators, and community leaders.</p>
+            <a class="link-arrow" href="#">Watch now
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </article>
 
-        <article class="card product reveal">
-          <div class="product-media ph-2" aria-hidden="true"><span>Photo</span></div>
-          <div class="card-body">
-            <h3>Performance Hoodie</h3>
-            <p>Heavyweight fleece for warm-ups, cool-downs, and the walk back to the car.</p>
-            <p class="price">$72</p>
+        <article class="feature reveal">
+          <img class="feature-img" src="assets/img/runclub.jpg" alt="Two runners watching the Tampa skyline from a palm-lined court at dusk">
+          <div class="feature-scrim" aria-hidden="true"></div>
+          <div class="feature-body">
+            <p class="label">Community</p>
+            <h2>Tampa<br>Run Club</h2>
+            <p class="feature-text">Runs, workouts, and people. All are welcome.</p>
+            <a class="link-arrow" href="#">See events
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </article>
 
-        <article class="card product reveal">
-          <div class="product-media ph-3" aria-hidden="true"><span>Photo</span></div>
-          <div class="card-body">
-            <h3>Session Shorts</h3>
-            <p>Four-way stretch, zip pocket, no ride-up. The pair you reach for first.</p>
-            <p class="price">$48</p>
-          </div>
-        </article>
       </div>
 
-      <p class="section-foot reveal">
-        Online checkout is coming. Until then —
-        <a href="#contact">message us</a> to order or ask about sizing.
-      </p>
-    </div>
-  </section>
-
-  <!-- ================= TRAINING ================= -->
-  <section class="section section-alt" id="training">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <p class="eyebrow">02 — Training</p>
-        <h2>Programs that assume you're serious</h2>
-        <p class="lede">Coach-written, progressively loaded, and adjusted to what you can actually do this week.</p>
-      </header>
-
-      <div class="grid grid-3">
-        <article class="card plan reveal">
-          <h3>Foundations</h3>
-          <p class="plan-price">$49<span>/month</span></p>
-          <ul class="ticks">
-            <li>3 sessions per week</li>
-            <li>Strength &amp; conditioning base</li>
-            <li>Video form library</li>
-            <li>Email support</li>
-          </ul>
-          <a class="btn btn-ghost btn-block" href="#contact">Start here</a>
-        </article>
-
-        <article class="card plan featured reveal">
-          <p class="tag">Most popular</p>
-          <h3>Competitor</h3>
-          <p class="plan-price">$99<span>/month</span></p>
-          <ul class="ticks">
-            <li>5 sessions per week</li>
-            <li>Sport-specific blocks</li>
-            <li>Monthly check-in call</li>
-            <li>Programming adjusted to your data</li>
-          </ul>
-          <a class="btn btn-primary btn-block" href="#contact">Join Competitor</a>
-        </article>
-
-        <article class="card plan reveal">
-          <h3>1-on-1 Coaching</h3>
-          <p class="plan-price">$249<span>/month</span></p>
-          <ul class="ticks">
-            <li>Fully bespoke programming</li>
-            <li>Weekly video review</li>
-            <li>Direct line to your coach</li>
-            <li>Competition prep &amp; peaking</li>
-          </ul>
-          <a class="btn btn-ghost btn-block" href="#contact">Apply</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= TEAM / CLUB ================= -->
-  <section class="section" id="team">
-    <div class="wrap split">
-      <div class="split-text reveal">
-        <p class="eyebrow">03 — The Team</p>
-        <h2>Train alone if you want. It's slower.</h2>
-        <p class="lede">
-          The JITT squad meets year-round. Open sessions for anyone testing the water,
-          a competitive roster for athletes chasing a result, and a coaching staff that
-          knows every name in the room.
-        </p>
-        <ul class="ticks ticks-lg">
-          <li>Open sessions — Tue &amp; Thu, 6:00 PM</li>
-          <li>Squad training — Mon / Wed / Sat, 7:00 AM</li>
-          <li>Youth development — Sat, 10:00 AM</li>
-        </ul>
-        <a class="btn btn-primary" href="#contact">Book a trial session</a>
-      </div>
-      <div class="split-media reveal" aria-hidden="true">
-        <div class="ph-4"><span>Team photo</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= STORY ================= -->
-  <section class="section section-alt" id="story">
-    <div class="wrap narrow">
-      <header class="section-head reveal">
-        <p class="eyebrow">04 — Story</p>
-        <h2>Why JITT exists</h2>
-      </header>
-      <div class="prose reveal">
-        <p>
-          JITT started in a half-empty gym with borrowed plates and a group chat.
-          No sponsors, no shortcuts — just a handful of athletes who wanted programming
-          that respected their time and kit that didn't fall apart by week three.
-        </p>
-        <p>
-          We still make everything the same way: test it ourselves, keep what works,
-          bin what doesn't. If it isn't good enough for our own squad, it doesn't get
-          our name on it.
-        </p>
-        <p class="signature">— The JITT Athletics team</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= CONTACT ================= -->
-  <section class="section contact" id="contact">
-    <div class="wrap narrow">
-      <header class="section-head reveal">
-        <p class="eyebrow">05 — Get in touch</p>
-        <h2>Come train with us</h2>
-        <p class="lede">Questions about gear, programs, or the squad? Send a note and we'll get back within a day.</p>
-      </header>
-
-      <!--
-        FORM SETUP: this form posts nowhere until you connect a handler.
-        Easiest option — create a free form at https://formspree.io and replace
-        the action below with your endpoint, then delete the data-mailto attribute.
-        Until then the form opens the visitor's email client addressed to you.
-      -->
-      <form class="form reveal" id="contactForm" data-mailto="hello@jittathletics.com" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
-          <p class="error" data-error-for="name"></p>
+      <!-- Shop banner -->
+      <article class="shop reveal" id="shop">
+        <div class="shop-copy">
+          <p class="label">Shop</p>
+          <h2>Wear<br>the Movement</h2>
+          <p class="shop-text">Performance-inspired apparel for everyday people.</p>
+          <a class="btn btn-primary" href="#">
+            Shop now
+            <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
         </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-          <p class="error" data-error-for="email"></p>
-        </div>
-        <div class="field">
-          <label for="topic">I'm interested in</label>
-          <select id="topic" name="topic">
-            <option>Gear</option>
-            <option>Training programs</option>
-            <option>Joining the team</option>
-            <option>Something else</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-          <p class="error" data-error-for="message"></p>
-        </div>
-        <button class="btn btn-primary btn-block" type="submit">Send message</button>
-        <p class="form-note" id="formNote" role="status"></p>
-      </form>
+        <img class="shop-img" src="assets/img/products.jpg" alt="JITT Athletics black tee, hoodie, and cap">
+      </article>
     </div>
   </section>
 
 </main>
 
-<!-- ================= FOOTER ================= -->
+<!-- ===================== FOOTER ===================== -->
 <footer class="site-footer">
+  <div class="palms" aria-hidden="true"></div>
   <div class="wrap footer-inner">
-    <div class="footer-brand">
-      <span class="brand-mark" aria-hidden="true">J</span>
-      <p>JITT Athletics<br><span class="muted">Train hard. Wear it proud.</span></p>
+    <div class="footer-left">
+      <p class="footer-place">Tampa, FL</p>
+      <p class="footer-tag">People. Movement. Opportunity.</p>
     </div>
 
-    <nav class="footer-nav" aria-label="Footer">
-      <a href="#gear">Gear</a>
-      <a href="#training">Training</a>
-      <a href="#team">Team</a>
-      <a href="#story">Story</a>
-      <a href="#contact">Contact</a>
+    <span class="footer-rule" aria-hidden="true"></span>
+
+    <nav class="socials" aria-label="Social media">
+      <!-- EDIT ME: point these at the real profiles -->
+      <a href="#" aria-label="JITT Athletics on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7">
+          <rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="JITT Athletics on YouTube">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7">
+          <rect x="2" y="5" width="20" height="14" rx="4.5"/><path d="M10.5 9.2v5.6l4.8-2.8z" fill="currentColor" stroke="none"/>
+        </svg>
+      </a>
+      <a href="#" aria-label="JITT Athletics on TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+          <path d="M16.2 2h-2.9v13.1a2.5 2.5 0 1 1-2.2-2.5v-2.9a5.4 5.4 0 1 0 5.1 5.4V8.9a6.4 6.4 0 0 0 3.7 1.2V7.2a3.7 3.7 0 0 1-3.7-3.7V2z"/>
+        </svg>
+      </a>
     </nav>
-
-    <div class="footer-contact">
-      <!-- EDIT ME: real contact details and social links -->
-      <a href="mailto:hello@jittathletics.com">hello@jittathletics.com</a>
-      <div class="socials">
-        <a href="#" aria-label="Instagram">Instagram</a>
-        <a href="#" aria-label="TikTok">TikTok</a>
-        <a href="#" aria-label="YouTube">YouTube</a>
-      </div>
-    </div>
   </div>
+
   <div class="wrap footer-legal">
-    <p>&copy; <span id="year">2026</span> JITT Athletics. All rights reserved.</p>
+    <p>&copy; <span id="year">2026</span> JITT Athletics — Tampa, Florida.</p>
   </div>
 </footer>
+
+<!-- ===================== JOIN DIALOG ===================== -->
+<!-- Gives the "Join JITT" buttons somewhere to go without adding a section
+     that isn't in the design. -->
+<div class="modal" id="joinModal" hidden>
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="joinTitle">
+    <button class="modal-close" type="button" aria-label="Close" data-close>&times;</button>
+    <p class="label">Join JITT</p>
+    <h2 id="joinTitle">Get on the list</h2>
+    <p class="modal-text">Runs, drops, and events in Tampa — straight to your inbox. No spam.</p>
+
+    <!--
+      FORM SETUP: create a free form at https://formspree.io (or Mailchimp,
+      Beehiiv, ConvertKit) and paste the endpoint into action="" below.
+      Until then this falls back to opening the visitor's email app.
+    -->
+    <form class="join-form" id="joinForm" data-mailto="hello@jittathletics.com" novalidate>
+      <label class="sr-only" for="joinEmail">Email address</label>
+      <input id="joinEmail" name="email" type="email" placeholder="you@email.com" autocomplete="email" required>
+      <button class="btn btn-primary" type="submit">Join</button>
+    </form>
+    <p class="form-note" id="joinNote" role="status"></p>
+  </div>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>

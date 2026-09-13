@@ -1,14 +1,13 @@
 /* ==========================================================================
    JITT ATHLETICS — site behaviour
-   Plain JS, no dependencies. Runs after the DOM because the tag is at the
-   bottom of <body>.
+   Plain JS, no dependencies.
    ========================================================================== */
 (function () {
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- Current year in the footer ---------- */
+  /* ---------- Footer year ---------- */
   var year = document.getElementById('year');
   if (year) year.textContent = new Date().getFullYear();
 
@@ -30,22 +29,19 @@
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     });
     nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') closeNav();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') closeNav();
+      if (e.target.closest('a')) closeNav();
     });
   }
 
-  /* ---------- Header shadow on scroll ---------- */
+  /* ---------- Header hairline once scrolled ---------- */
   var header = document.getElementById('siteHeader');
   function onScroll() {
-    if (header) header.classList.toggle('scrolled', window.scrollY > 10);
+    if (header) header.classList.toggle('scrolled', window.scrollY > 8);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  /* ---------- Reveal elements as they enter the viewport ---------- */
+  /* ---------- Reveal on scroll ---------- */
   var revealables = document.querySelectorAll('.reveal');
   if (reduceMotion || !('IntersectionObserver' in window)) {
     revealables.forEach(function (el) { el.classList.add('visible'); });
@@ -56,140 +52,123 @@
         entry.target.classList.add('visible');
         revealObserver.unobserve(entry.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
     revealables.forEach(function (el) { revealObserver.observe(el); });
   }
 
-  /* ---------- Count up the hero stats once ---------- */
-  var counters = document.querySelectorAll('[data-count]');
-  function countUp(el) {
-    var target = parseInt(el.getAttribute('data-count'), 10);
-    if (isNaN(target)) return;
-    var suffix = el.textContent.replace(/[\d\s,]/g, '');
-    var start = performance.now();
-    var duration = 1100;
-    function step(now) {
-      var p = Math.min((now - start) / duration, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-      if (p < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  if (!reduceMotion && 'IntersectionObserver' in window) {
-    var countObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        countUp(entry.target);
-        countObserver.unobserve(entry.target);
-      });
-    }, { threshold: 0.6 });
-    counters.forEach(function (el) { countObserver.observe(el); });
-  }
-
-  /* ---------- Highlight the section you're looking at ---------- */
-  var sections = document.querySelectorAll('main section[id]');
+  /* ---------- Active nav link ---------- */
   var navLinks = {};
-  document.querySelectorAll('.nav a[href^="#"]').forEach(function (link) {
+  document.querySelectorAll('.nav > a[href^="#"]').forEach(function (link) {
     navLinks[link.getAttribute('href').slice(1)] = link;
   });
+  var sections = document.querySelectorAll('section[id], article[id]');
   if ('IntersectionObserver' in window && sections.length) {
     var sectionObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         var link = navLinks[entry.target.id];
-        if (!link) return;
-        if (entry.isIntersecting) {
-          Object.keys(navLinks).forEach(function (k) { navLinks[k].classList.remove('active'); });
-          link.classList.add('active');
-        }
+        if (!link || !entry.isIntersecting) return;
+        Object.keys(navLinks).forEach(function (k) { navLinks[k].classList.remove('active'); });
+        link.classList.add('active');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
     sections.forEach(function (s) { sectionObserver.observe(s); });
   }
 
-  /* ---------- Contact form ----------
-     Two modes:
-       1. If the <form> has an `action` (e.g. a Formspree endpoint), the message
-          is POSTed there over fetch and the visitor never leaves the page.
-       2. Otherwise it falls back to opening the visitor's email client,
-          addressed to the value of data-mailto.
-  ------------------------------------- */
-  var form = document.getElementById('contactForm');
-  var note = document.getElementById('formNote');
+  /* ---------- Join modal ----------
+     Every "Join JITT" / "Join the movement" control opens this, so the
+     primary CTA has a destination without adding a section to the design.
+  ---------------------------------- */
+  var modal = document.getElementById('joinModal');
+  var joinForm = document.getElementById('joinForm');
+  var joinEmail = document.getElementById('joinEmail');
+  var joinNote = document.getElementById('joinNote');
+  var lastFocused = null;
 
-  function setError(field, message) {
-    var wrapper = field.closest('.field');
-    var slot = wrapper.querySelector('[data-error-for="' + field.id + '"]');
-    wrapper.classList.toggle('invalid', Boolean(message));
-    if (slot) slot.textContent = message || '';
+  function openModal() {
+    lastFocused = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    joinEmail.focus();
+  }
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
   }
 
-  function validate() {
-    var ok = true;
-    ['name', 'email', 'message'].forEach(function (id) {
-      var field = form.elements[id];
-      var value = field.value.trim();
-      var message = '';
-      if (!value) {
-        message = 'This field is required.';
-      } else if (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-        message = 'Enter a valid email address.';
+  if (modal) {
+    document.querySelectorAll('[data-join]').forEach(function (el) {
+      el.addEventListener('click', function (e) { e.preventDefault(); closeNav(); openModal(); });
+    });
+    modal.querySelectorAll('[data-close]').forEach(function (el) {
+      el.addEventListener('click', closeModal);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { if (!modal.hidden) closeModal(); else closeNav(); }
+      // keep focus inside the dialog while it's open
+      if (e.key === 'Tab' && !modal.hidden) {
+        var f = modal.querySelectorAll('button, input, a[href]');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
-      if (message) ok = false;
-      setError(field, message);
     });
-    return ok;
   }
 
-  if (form) {
-    ['name', 'email', 'message'].forEach(function (id) {
-      form.elements[id].addEventListener('input', function () {
-        if (form.elements[id].closest('.field').classList.contains('invalid')) validate();
-      });
-    });
-
-    form.addEventListener('submit', function (e) {
+  /* ---------- Signup ----------
+     With an `action` on the form the email is POSTed there in the background.
+     Without one it falls back to the visitor's email client.
+  ----------------------------- */
+  if (joinForm) {
+    joinForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      note.classList.remove('ok');
-      if (!validate()) {
-        note.textContent = 'Please fix the highlighted fields.';
+      var value = joinEmail.value.trim();
+      joinNote.className = 'form-note';
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        joinEmail.classList.add('invalid');
+        joinNote.textContent = 'Enter a valid email address.';
+        joinNote.classList.add('err');
+        joinEmail.focus();
         return;
       }
+      joinEmail.classList.remove('invalid');
 
-      var data = {
-        name: form.elements.name.value.trim(),
-        email: form.elements.email.value.trim(),
-        topic: form.elements.topic.value,
-        message: form.elements.message.value.trim()
-      };
-
-      var action = form.getAttribute('action');
+      var action = joinForm.getAttribute('action');
       if (action) {
-        note.textContent = 'Sending…';
+        joinNote.textContent = 'Signing you up…';
         fetch(action, {
           method: 'POST',
           headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
+          body: JSON.stringify({ email: value })
         }).then(function (res) {
           if (!res.ok) throw new Error('Request failed');
-          form.reset();
-          note.textContent = 'Thanks — we’ll be in touch within a day.';
-          note.classList.add('ok');
+          joinForm.reset();
+          joinNote.textContent = 'You’re in. Welcome to JITT.';
+          joinNote.classList.add('ok');
         }).catch(function () {
-          note.textContent = 'Something went wrong. Email us directly at ' + (form.dataset.mailto || '') + '.';
+          joinNote.textContent = 'Something went wrong — email ' + (joinForm.dataset.mailto || '') + '.';
+          joinNote.classList.add('err');
         });
         return;
       }
 
-      // No endpoint configured yet — hand off to the visitor's email client.
-      var to = form.dataset.mailto || '';
-      var subject = 'JITT Athletics enquiry — ' + data.topic;
-      var body = 'Name: ' + data.name + '\nEmail: ' + data.email + '\nInterested in: ' + data.topic + '\n\n' + data.message;
+      var to = joinForm.dataset.mailto || '';
       window.location.href = 'mailto:' + to +
-        '?subject=' + encodeURIComponent(subject) +
-        '&body=' + encodeURIComponent(body);
-      note.textContent = 'Opening your email app… if nothing happens, write to ' + to + '.';
-      note.classList.add('ok');
+        '?subject=' + encodeURIComponent('Join JITT') +
+        '&body=' + encodeURIComponent('Please add me to the JITT Athletics list: ' + value);
+      joinNote.textContent = 'Opening your email app… or write to ' + to + '.';
+      joinNote.classList.add('ok');
+    });
+  }
+
+  /* ---------- Cart placeholder ---------- */
+  var cartBtn = document.getElementById('cartBtn');
+  if (cartBtn) {
+    cartBtn.addEventListener('click', function () {
+      // No store connected yet — see README for wiring this to Shopify.
+      openModal();
     });
   }
 })();
